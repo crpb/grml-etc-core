@@ -2828,8 +2828,12 @@ if [[ -r /etc/debian_version ]] ; then
         fi
         #a3# Execute \kbd{aptitude install}
         salias ati="aptitude install"
-        #a3# Execute \kbd{aptitude update ; aptitude safe-upgrade}
-        salias -a up="aptitude update ; aptitude safe-upgrade"
+        #a3# Execute \kbd{aptitude/apt-get update ; aptitude/apt-get safe-upgrade}
+        if check_com -c aptitude ; then
+            salias -a up="aptitude update ; aptitude safe-upgrade"
+        elif check_com -c apt-get ; then
+            salias -a up="apt-gete update ; apt-get upgrade"
+        fi
         #a3# Execute \kbd{dpkg-buildpackage}
         alias dbp='dpkg-buildpackage'
         #a3# Execute \kbd{grep-excuses}
