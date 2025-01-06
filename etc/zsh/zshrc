@@ -554,8 +554,9 @@ fi
 
 # load our function and completion directories
 for fdir in /usr/share/grml/zsh/completion /usr/share/grml/zsh/functions; do
-    fpath=( ${fdir} ${fdir}/**/*(/N) ${fpath} )
+    [[ -d ${fdir} ]] && fpath=( ${fdir} ${fdir}/**/*(/N) ${fpath} )
 done
+
 typeset -aU ffiles
 ffiles=(/usr/share/grml/zsh/functions/**/[^_]*[^~](N.:t))
 (( ${#ffiles} > 0 )) && autoload -U "${ffiles[@]}"
