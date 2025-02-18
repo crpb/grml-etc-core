@@ -169,7 +169,7 @@ fi
 ## aliases ##
 
 ## translate
-#alias u='translate -i'
+#check_com -c translate && alias u='translate -i'
 
 ## ignore ~/.ssh/known_hosts entries
 #alias insecssh='ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null" -o "PreferredAuthentications=keyboard-interactive"'
@@ -310,7 +310,7 @@ fi
 #    TMOUT=1800
 #fi
 
-## associate types and extensions (be aware with perl scripts and anwanted behaviour!)
+## associate types and extensions (be aware with perl scripts and unwanted behaviour!)
 #check_com zsh-mime-setup || { autoload zsh-mime-setup && zsh-mime-setup }
 #alias -s pl='perl -S'
 
