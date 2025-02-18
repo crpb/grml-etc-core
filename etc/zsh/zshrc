@@ -3300,7 +3300,7 @@ fi
 #  $ awk -F ':' '{ print $2" : "$1" "$3 }' \
 #    /usr/local/lib/words/en-de.ISO-8859-1.vok > ~/.translate/de-en.ISO-8859-1.vok
 #f5# Translates a word
-function trans () {
+check_com -c trans || function trans () {
     emulate -L zsh
     case "$1" in
         -[dD]*)
