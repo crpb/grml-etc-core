@@ -453,11 +453,13 @@ function salias () {
     fi
 
     key="${1%%\=*}" ;  val="${1#*\=}"
-    if (( EUID == 0 )) && (( only == 0 )); then
-        alias -- "${key}=${val}"
-    elif (( EUID > 0 )) ; then
-        (( multi > 0 )) && val="${val// ; / ; sudo }"
-        alias -- "${key}=sudo ${val}"
+    if check_com "${val%% *}"; then
+      if (( EUID == 0 )) && (( only == 0 )); then
+          alias -- "${key}=${val}"
+      elif (( EUID > 0 )) ; then
+          (( multi > 0 )) && val="${val// ; / ; sudo }"
+          alias -- "${key}=sudo ${val}"
+      fi
     fi
 
     return 0
